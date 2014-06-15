@@ -9,4 +9,10 @@ FactoryGirl.define do
     end
   end
 
+  factory :authentication do
+    user
+    uid 'googleuid123'
+    provider 'oauth_provider'
+  end
+
 end
