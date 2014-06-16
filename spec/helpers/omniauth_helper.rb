@@ -4,7 +4,8 @@ module OmniauthHelper
       provider: 'oauth_provider',
       uid: 'googleuid123',
       info: {
-        email: 'omar@baltimore.org'
+        email: 'omar@baltimore.org',
+        image: 'fake-url.png'
       },
       credentials: {
         token: 'token'

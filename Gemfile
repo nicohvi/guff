@@ -11,12 +11,12 @@ gem 'turbolinks'
 
 # use Omniauth for oauth auth
 gem 'omniauth-google-oauth2'
+gem 'omniauth-github'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'byebug'
   gem 'spring'
-  gem 'spring-commands-rspec'
   gem 'dotenv-rails'
   gem 'priscilla'
 end
