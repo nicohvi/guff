@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
         user.authentications.create(provider: auth_hash[:provider],
          uid: auth_hash[:uid])
       else
-        auth_hash[:user] = auth_hash.delete :info)
+        auth_hash[:user] = auth_hash.delete :info 
         user = User.create(user_params(auth_hash[:user].symbolize_keys!))
       end
     session[:user_id] = user.id

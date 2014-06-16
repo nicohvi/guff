@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
     User.find(session[:user_id])
   end
 
+  def authenticate_user
+    redirect_to home_path unless current_user
+  end
+
 end
