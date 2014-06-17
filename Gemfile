@@ -8,6 +8,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'haml'
 gem 'turbolinks'
+gem 'rename'
 
 # use Omniauth for oauth auth
 gem 'omniauth-google-oauth2'
