@@ -25,7 +25,7 @@ describe SessionsController, type: :controller do
       expect(flash[:error]).to_not be_nil
       expect(@controller.current_user).to be_nil
     end
-
+    
     it 'creates new user for first time login through oauth_provider' do
       expect(User.all.length).to eq(0)
       post :create, provider: :oauth_provider
