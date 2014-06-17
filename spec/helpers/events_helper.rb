@@ -1,11 +1,11 @@
 module EventsHelper
 
   def login_user
-    begin
-      @controller.current_user = User.last
-    rescue
-      p 'No @controller defined - are you using a controller spec?'
-    end
+    allow(@controller).to receive(:current_user).and_return(User.last)
+  end
+
+  def current_user
+    @controller.current_user
   end
 
 end

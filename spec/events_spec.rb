@@ -19,7 +19,7 @@ describe EventsController, type: :controller do
 
     it 'lists all relevant events' do
       get :index
-      expect(assigns(:events)).to eq(User.first.events)
+      expect(assigns(:events)).to eq(current_user.events)
     end
 
   end
