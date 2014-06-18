@@ -9,18 +9,6 @@ FactoryGirl.define do
       email ''
     end
 
-    factory :user_with_daily_events do
-      ignore do
-        events_count Random.rand(1..10)
-      end
-
-      after(:create) do |user, evaluator|
-        create_list(:attended_event, evaluator.events_count,
-          { host: user, begins_at: Date.today.to_datetime,
-            ends_at: Date.today.end_of_day - evaluator.events_count.hours })
-      end
-
-    end
   end
 
   factory :authentication do
@@ -29,10 +17,15 @@ FactoryGirl.define do
     provider 'oauth_provider'
   end
 
-  factory :event, aliases: [:attended_event] do
+  factory :event do
+    host
     name 'dummy-event'
-    begins_at Date.today.to_datetime
-    ends_at Date.today.end_of_day
+
+    factory :invalid_event do
+      begins_at Date.tomorrow
+      ends_at Date.today
+    end
+
   end
 
 end
