@@ -18,8 +18,8 @@ describe EventsController, type: :controller do
     end
 
     it 'lists all relevant events' do
-      get :index
-      expect(assigns(:events)).to eq(current_user.events)
+      get :index, scope: 'daily'
+      expect(assigns(:events)).to eq(current_user.events.daily)
     end
 
   end
