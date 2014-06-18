@@ -12,5 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require event-emitter
 //= require turbolinks
-//= require_tree .
+//= require auth
+//= require app
+
+$(document).ready(function() {
+  window.app = new App()
+})

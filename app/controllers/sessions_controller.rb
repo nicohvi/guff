@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       session[:user_id] = authentication.user.id
     else
       # see if there already exists an user using the same email
-      user = User.find_by(email: auth_hash[:email])
+      user = User.find_by(email: auth_hash[:info][:email])
       if user
         user.authentications.create(provider: auth_hash[:provider],
          uid: auth_hash[:uid])
@@ -23,8 +23,9 @@ class SessionsController < ApplicationController
       end
     session[:user_id] = user.id
     end
+    byebug
     flash[:notice] = t('user.login_success', provider: auth_hash[:provider])
-    render nothing: true, status: 200
+    render 'partials/_close_window', layout: false
   end
 
   def destroy

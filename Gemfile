@@ -9,6 +9,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'haml'
 gem 'turbolinks'
 gem 'rename'
+gem 'bourbon'
 
 # use Omniauth for oauth auth
 gem 'omniauth-google-oauth2'
