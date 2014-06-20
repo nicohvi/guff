@@ -2,9 +2,9 @@ class SessionsController < ApplicationController
 
   def create
     auth_hash = request.env['omniauth.auth']
-    flash[:error] = t('user.already_logged_in') if current_user
-    flash[:error] = t('user.login_failure') unless auth_hash.is_a?(Hash)
-    return render nothing: true, status: 401 if flash[:error]
+    flash[:error] = t('errors.user.already_logged_in') if current_user
+    flash[:error] = t('errors.user.login_failure') unless auth_hash.is_a?(Hash)
+    return render 'partials/_close_window', layout: false if flash[:error]
 
     authentication = Authentication.find_by(provider: auth_hash[:provider],
       uid: auth_hash[:uid])
@@ -23,13 +23,13 @@ class SessionsController < ApplicationController
       end
     session[:user_id] = user.id
     end
-    byebug
-    flash[:notice] = t('user.login_success', provider: auth_hash[:provider])
+    flash[:notice] = t('user.login_success')
     render 'partials/_close_window', layout: false
   end
 
   def destroy
     reset_session
+    flash[:notice] = t('user.logout_success')
     redirect_to root_path
   end
 

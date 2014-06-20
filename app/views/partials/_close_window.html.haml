@@ -1,4 +1,9 @@
-:javascript
-  auth = new Event('auth')
-  window.opener.dispatchEvent(auth)
-  window.close()
+- if flash[:error]
+  :javascript
+    error = "#{flash[:error]}"
+    window.opener.app.emit('error', error)
+    window.close()
+- else
+  :javascript
+    window.opener.app.emit('auth')
+    window.close()
